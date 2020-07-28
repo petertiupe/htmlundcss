@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!-- Die Sprache kann auch an anderen Stellen verwendet werden und hilft
+     z.B. einem Screenreader bei der korrrekten Aussprache
+
+     möglich ist also z.B. auch
+
+        <p lang='de'>This is english text </p>
+
+     innerhalb einer deutschen Seite.
+
+     HTML ist semantisch. In der Regel sagen die Tags etwas über die Bedeutung des in ihnen stehenden
+     Inhalts. Das Aussehen wird durch sie nicht bestimmt. Das geschieht über ein im Browser eingebautes
+     CSS-Sheet.
+
+     <strong> Mittel zur Hervorhebung aber nicht zur Anzeige ...
+     <em>   ebenfalls Mittel zur Hervorhebung ...
+
+     Listen
+     unsorted list
+     <ul>
+        <li></li>
+        <li></li>
+        <li></li>...
+     </ul>
+
+     ordered list
+     <ol start="3" type="I"> Liste fängt mit der 3 bei der Nummerierung an type ist für die Art der Nummerierung
+                             1 Zahlen,
+                             a Kleinbuchstaben,
+                             A Großbuchstaben,
+                             i römische Zahlen (klein) oder
+                             I römische Zahlen (groß)
+        <li></li>
+        <li></li>
+        <li></li>...
+     </ol>
+
+     Beschreibende Listen
+     <dl> (description list)
+     <dt> (description tern)
+     <dd> (description definition)
+
+     <dl>
+        <dt>
+        </dt>
+        <dd>
+        </dd>
+        <dt>
+        </dt>
+        <dd>
+        </dd>... Es handelt sich dabei nicht um ein festgesetztes Verhältnis, es darf auch
+                 mehrere Beschreibungen zu einem Begriff oder mehrere Begriffe zu einer Beschreibung geben...
+     </dl>
+
+Block- und Inlineelemente sollten mir klar sein, daher nur die Wiederholung des Begriffs.
+Listenelemente sind eine Sonderform der Blockelemente
+
+    display: block;
+    display: inline;
+    display: list-item;
+
+sind die drei Standardmöglichkeiten für die CSS-Display-Eigenschaft, wobei es noch sehr viele weitere in der
+Codeergänzung von Intellij gibt.
+
+<a href="www.tiupe.de"> steht für anchor href wieder für Hyperreference
+                        Als href sind möglich:
+                        - Dateiname
+                        - komplette URL
+                        - # Kürzel z.B. #top
+                        - target="_blank" sorgt immer für einen neuen Tab statt in dem selben Fenster zu öffnen.
+                        - rel="noreferrer noopener" sorgt dafür, dass die mit _blank geöffnete und die Elternseite
+                                                    miteinander kommunizieren.
+
+
+
+Das Anchor-Element darf mittlerweile um inline oder um block-Elemente stehen. Es wird als sogenanntes
+transparentes Element bezeichnet.
+
+Man kann auch zu einer id auf einer anderen Seite springen:
+
+    <a href="kontakt.html#formular">Zum Kontaktformular </a>
+
+springt auf die Seite kontakt.html und dort zu der id 'formular'.
+
+Mit
+
+    <a href="tel:..."
+
+und
+
+    <a href="mailto:..."
+
+kann man zu Telefonnummern und E-Mail-Adressen verlinken.
+
+Semantische HTML-Elemente
+
+    header      kann durchaus mehrfach auftreten, z.B. als header eines Blogbeitrages
+    nav         beinhaltet eine Sammlung von Hyperlinks und kann ebenfalls mehrfach auftauchen
+    main        markiert den Hauptinhalt der Seite und darf nur einmal vorkommen
+                nur body oder div sind als Elternelemente erlaubt, das unterstreicht die
+                besondere Bedeutung des main-Elements
+    footer      kann wie header mehrfach auf der Seite vorkommen und z.B. Abschnitte oder Artikel abschließen
+    section     ist ein Abschnitt und weist auf einen Bereich bzw. eine thematische Gruppierung hin
+                Will man nur gestalten, sollte man nicht section sondern weiterhin div verwenden. div ist
+                neutraler und hat beliebigen Inhalt, während section auch eine "Seitengliederungsbedeutung" hat.
+    article     ein article hat die selbe Bedeutung wie eine section. Der Unterschied besteht darin, dass ein
+                article immer auch für sich allein stehen können sollte. Es handelt sich um eine in sich
+                geschlossene Komposition.
+    aside       ist für Texte gedacht, die den umgebenden Text erläutern oder nur marginal mit ihm in Verbindung
+                stehen. Wenn man die 'aside'-Informationen aus der Seite entfernt, sollte diese dennoch
+                sinnvoll und verständlich bleiben.
+                Man kann es auch nutzen für "Hilfe-Texte" "Werbeblöcke"...
+
+In HTML dienen die Elemente zur Strukturierung des Quelltextes.
+In CSS dienen die Strukturen als Layoutbereiche.
+
+Zitate
+
+Inlinezitate werden mit <q> markiert:
+<p>Martin Luther King sagte: <q>I have a dream</q>.</p>
+
+Blockzitate dagegen haben folgende HTML-Struktur:
+<blockquote>
+    <p>
+        I like deadlines. I like the whooshing sound they make when they go by.
+    </p>
+    <cite>
+        <a href="....">The Salmon of Doubt</a>
+    </cite>
+</blockquote>
+
+Lt. HTML-Spezifikation sollte cite lediglich für die Verlinkung genutzt werden.
+
+
+<adress> dient dazu Adresse, Telefonnummer etc. des Webseitenautors zu hinterlegen. Adressen im Fließtext kann
+         man dagegen mit einem ganz normalen <p>-Element auszeichnen.
+
+<del> und <ins> dienen dazu Änderungen im Text zu dokumentieren.
+
+Zeitangaben
+<time datetime="1966-10-01">Der Text erscheint im Browser</time>
+Auch für Uhrzeiten gibt es Formate, die ich bei Bedarf ansehen muss....
+
+<time datetime="1966-10-01T10:28+01:00">
+    Der Text erscheint im Browser und die Zeitangabe ist mit Uhrzeit und Zeitzone.
+</time>
+
+<span>  ist das semantisch neutrale Inline-Element als Pendant zu <div>
+
+<hr>    steht für horizontal rule und ist ein inhaltlicher Bruck innerhalb eines Abschnitts.
+
+Ausklappbare Inhalte kann man sehr einfach mit
+
+    <details> -- falls das Attribut open wie in <details open> enthalten ist, ist der ausgeklappte Zustand der öffnende
+        <summary>
+            Hier steht die Zusammenfassung oder ein Stichwort.
+        </summary>
+        <p>Hier steht der zunächst eingeklappte längere Text, der in der summary zusammengefasst wurde.</p>
+    </details>
+
+erzeugen.
+
+Inline-Elemente, die nicht so häufig benutzt werden:
+
+    abbr        <abbr title="Deutschland">DE</abbr>     Abkürzung erläutern
+    sub         Wasser ist chemisch H<sub>2</sub>O      tiefergestellter Text
+    sup         Das Zimmer hat 12 m<sup>2</sup>.        höhergestellter Text
+    code        Das Element heißt <code>br</code>.      Quelltext auszeichnen
+
+Bei der Darstellung von Code hat man häufig das Problem, dass Blanks und Zeilenumbrüche vom
+Browser verschluckt werden. Via:
+
+    <pre>
+        <code>
+            Hier steht jetzt der Quellcode, bei dem die Blanks erhalten bleiben.
+        </code>
+    </pre>
+
+Ein paar Sonderzeichen
+
+&lt;        kleiner als
+&gt;        größer als
+&amp;       Kaufmannsund
+&mdash;     langer Bindestrich
+&euro;      euro-Zeichen
+&copy;      copyright
+&reg;       registered Trademark
+&bull;      bullet
+6nbsp;      non breakable space
+
+HTML zum Erstellen von Formularen
+=================================
+Jedes Formular hat ein form-Element
+
+<form action="#" method="post"> ... </form>   action enthält den Pfad zum Programm method kennt get und post
+
+label und input können sich umschließen, dann ist eine id nicht zwingend erforderlich. Das Vorgehen schränkt
+aber die Gestaltungsmöglichkeiten ein, daher arbeitet man oft mit ids.
+
+Typen für das Input-Feld sind:
+    date        ->  liefert gleich den Datepicker des Browsers
+    email       ->  steuert die virtuelle Tastatur auf mobilen Geräten
+    url         ->  für Webadressen
+    tel         ->  für Telefonnummern
+    hidden      ->  für ein nicht sichtbares Feld
+
+weitere attribute für Eingabefelder sind:
+    size        ->  steuert die Breite und kann via CSS überschrieben werden
+    maxlength   ->  maximale Eingabelänge
+    placeholder ->  stellt einen Beispielinhalt dar
+    autofocus   ->  setzt den Cursor nach dem Laden der Seite in das Feld
+
+Bei einer Radiogroup oder besser gesagt bei allen Feldern aus dem Formular bestimmt das name-Attribut,
+wie der Parameter auf dem Server angesprochen werden kann.
+
+Tabellen
+========
+Um die Tabellengestaltung am Anfang sehen zu können, macht es Sinn, die Zellen durch Linien abzugrenzen
+
+<td colspan="3">    ->  Die Daten der Zelle erstrecken sich über die in colspan genannte Spaltenanzahl
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Überschrift1</th>
+            <th>Überschrift2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Zeile 1 Spalte1</td>
+            <td>Zeile 1 Spalte2</td>
+        </tr>
+            ...
+    </tbody>
+        <tr>
+            <td>Footer-Zeile 1 Spalte1</td>
+            <td>Footer-Zeile 1 Spalte2</td>
+        </tr>
+    <tfoot>
+    </tfoot>
+</table>
+-->
+
+<html lang="de" id="top">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <!-- href ist die Abkürzung für Hyperreference es kann bei der Angabe jedes Protokoll verwendet werden.
+         rel steht für relation also die Beziehung zum Dokument
+    -->
+    <link href="css/style.css" rel="stylesheet">
+    <title>Startseite - HTML - Grundgerüst</title>
+</head>
+<body class="startseite">
+    <header class="site-header">
+        <h1>Four Wins</h1>
+        <p>Play <strong>Four Wins</strong> with the <em>fritz2</em> - Framework</p>
+    </header>
+    <nav class="site-nav">
+        <ul>
+            <li><a href="index.html">start page</a></li>
+            <li><a href="#">news</a></li>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+    </nav>
+    <main class="site-content" id="content">
+        <h2>Playing is fun, thats why we created this game to show the possibilities of fritz2</h2>
+
+        <form action="#" method="get">
+            <label>Geburtsdatum<input type="date"></input></label>
+
+        </form>
+
+        <p>Visit the <a href="https://www.fritz2.dev/"
+                        target="_blank"
+                        rel="noreferrer noopener">fritz2-Webpage</a></p>
+
+    </main>
+    <footer class="site-footer">
+        <a href="#top">top of page</a>
+    </footer>
+</body>
+</html>

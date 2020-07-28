@@ -1,0 +1,357 @@
+/*  css Kommentare sind wie Java-Block-Kommentare
+    Intellij erkennt die CSS-Datei und hat dann eine Codeergänzung, die man gut nutzen kann.
+*/
+/*
+Um CSS zu beherrschen, muss man die folgenden Dinge verstehen
+
+    - Selektoren
+    - Schrift und Text gestalten
+    - Abstände und Rahmenlinien
+    - Positionierung und Layout
+*/
+
+/*
+    Wo kann man CSS definieren?
+    1. in einer externen CSS-Datei
+    2. im Head einer Webseite im Element Style
+    3. im öffnenden Element im style-Attribut (wird auch inline-Style genannt)
+
+*/
+
+/*
+    Farben kann man entweder mit Namen oder Hexadezimal angeben:
+    background-color: black;
+    background-color: #000000;
+    background-color: rgb(rrr, ggg, bbb) kann man dann mit Dezimalwerten von 0 bis 255 schreiben
+    background-color: rgb(0,0,0)
+    background-color: rgba(0, 0, 0, 0.5) der letzte Wert steht für den Alpha-Kanal (0 bis 1.0), also die Transparenz
+
+    Auch die hexadezimale Angabe kann man mit Alpha-Kanal machen, ältere Browser erkennen aber eher die rgba - Methode.
+
+
+
+
+*/
+
+
+/*  padding kann man mit Polsterung übersetzen, dann hat man gleich einen Eindruck von der Eigenschaft.
+
+    Allgemein ist eine CSS-Eigenschaft folgendermaßen aufgebaut:
+
+        Selektor {
+            Eigenschaft: Wert;
+            Eigenschaft: Wert;
+        }
+
+Steht zwischen den Selektoren kein Komma, heißt das, dass beide HTML-Elemente in der Reihenfolge kommen müssen,
+nur dann wird das Stylesheet angewendet. Steht ein Komma dazwischen, heißt das, dass die folgenden Style-Angaben für
+alle durch Komma getrennten Tags gelten.
+
+Elementselektor
+---------------
+    man gibt einfach den Namen des HTML-Elements an, das gestaltet werden soll
+    p {
+        color: #333333;
+    }
+
+    // zwei Elemente, die beide dieselben Eigenschaften haben sollen, siehe oben, werden durch Komma getrennt
+    nav, footer {
+        background-color: #333333;
+        color: white;
+    }
+
+    // Lässt man das Komma weg, hat man den sogenannten Nachfahrenselektor, dann gilt der Style nur,
+    // wenn der Vorgänger ein nav ist für den footer.
+    nav footer {
+        background-color: #333333;
+        color: white;
+    }
+
+Universalselektor
+-----------------
+Man nutzt ihn selten, es gibt ihn aber dennoch, einen Selektor für alles...
+* {
+    box-sizing: border-box;
+}
+
+Class-Selektor
+--------------
+Der Class-Selektor selektiert die Elemente mit dem genannte class-Attribut
+Man kann damit
+
+    1. gleichnamige Elemente getrennt gestalten
+    2. Elemente zur gemeinsamen Gestaltung gruppieren
+
+.site-header {
+    ...
+} // spricht die Elemente an, die die Klasse site-header besitzen
+
+Will man die Klassen auf einen Elementtyp beschränken, stellt man den Element-Namen davor:
+
+article.infobox {
+    text-align: center;
+    background-color: white;
+} // jetzt wird nur noch ein article-Element mit der Klasse infobox durch diesen Eintrag beschrieben.
+
+Ein HTML-Element kann mehrere Klassennamen besitzen:
+
+<body class="startseite full-width">
+
+Dieses Element kann jetzt mit beiden Selektoren ausgewählt werden.
+
+Will man nur Elemente selektieren, die beide Klassen besitzen, so kann man dies mit folgendem Selektor:
+
+.startseite.ful-with {
+    ...
+}
+
+ID-Selektor
+-----------
+<main id="content">
+
+kann man mit dem folgenden Selektor auswählen:
+
+#content {
+    background-color: #eeeeee;
+}
+
+ID-Selektoren sind sehr spezifisch und stehen sehr hoch in der Hierarchie, daher sollte man sie sparsam verwenden.
+
+Nachfahrselektor
+----------------
+// Zu dem oben gesagten muss man ergänzen, dass  alle Anchor-Elemente unterhalb von site-nav
+// durch den Selector ausgewählt werden.
+
+.site-nav a {
+    ...
+}
+
+Kindselektor
+------------
+// Will man nur die direkten Kinder auswählen, muss man das Größerzeichen verwenden
+// Der Kindselektor ist also präziser als der Nachfahrselektor...
+
+.site-nav > a {
+    ...
+}
+
+Hier muss man natürlich aufpassen. Ändert sich die Struktur der Seite, zieht der entsprechende
+CSS-Selektor nicht mehr.
+
+Pseudoklassen
+-------------
+nav li:last-child
+nav li:first-child
+
+sind Pseudoklassen, die nicht in den Tags stehen müssen und nur das erste bzw. letzte Kind selektieren.
+
+Es gibt auch noch Geschwister-Selektoren + und ~
+
+    +   ->  nur das benachbarte Geschwisterelement
+    ~   ->  alle Geschwisterelemente
+
+Attributselektoren
+------------------
+Attributselektoren haben eckige Klammern
+
+Gestaltung von Text
+===================
+Firefox bietet eine sehr gute Möglichkeit zur Analyse der angezeigten Schriftart.
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1rem;                            // es geht auch smaller oder larger
+        line-height: normal;                        // 1.5 (ohne Einheit) ist eine alternative Notation
+        font-weight: normal oder bold;              // steuert die Strichstärke mit Werten zwischen 100 und 900
+        font-style: normal oder italic;             // erklärt sich von selbst
+        font-variant: small-caps;                   // Kapitälchen
+        text-align: left, center, right, justify;   // Textausrichtung im Block
+        text-ident: 2em oder -2em;                  // Einzug der ersten Zeile nach rechts oder links
+        text-shadow:                                // Text mit Schatten, die Einstellungen bei Bedarf ansehen
+        letter-spacing: 1px;                        // ist der Abstand zwischen den Zeichen
+     }
+
+    Man sollte sich auch immer überlegen, ob die Systemschriftarten eine Lösung sein könnte.
+    Diese benötigen keine Ladezeit und zeigen dem User das Gewohnte.
+
+    Webfonts bieten dann noch die Möglichkeit, die Schriftart mit zu laden, sodass die Seite
+    auf allen Rechnern gleich aussieht. Um rechtliche Probleme zu umgehen, nutzt man google-fonts.
+    Die google-fonts darf man auch auf seinem eigenen Rechner hosten, dann hat man nicht das Datenschutz-
+    rechtliche Problem, dass man Zugriffe auf google-Seiten durchführt.
+
+    Pseudoklassen für Links:
+    ------------------------
+    Im CSS kann man über Pseudoklassen das Aussehen für besuchte und für Links bestimmen. Man erkennt die
+    Pseudoklassen an dem Doppelpunkt:
+
+    a:link {
+        color: #0b74b8;
+    }
+
+    a:visited {
+        color: #36abde;
+    }
+
+    Weitere Pseudoklassen
+    ---------------------
+    :hover      ->  Mauszeiger über dem Element
+    :focus      ->  Durchsteppen per TAB-Taste
+    :active     ->  Moment der Aktivierung
+
+
+Das CSS-Box-Modell
+==================
+    p-b-m beschreibt die Bestandteile des Box-Modells.
+    padding - border - margin
+    Innenabstand, Polsterung    -   Rahmenlinie, Rand der Box   -    Außenabstand
+
+padding
+    padding-top
+    padding-right
+    padding-left
+    padding-bottom
+
+border
+    border-top
+    border-right
+    border-left
+    border-bottom
+    border-width
+    border-style    -> solid, dashed, dotted
+    border-color
+
+margin
+    margin-top
+    margin-right
+    margin-left
+    margin-bottom
+
+margin: auto zentriert Boxen horizontal. Beispiel:
+
+        body {
+            background-color: white;
+            max-width: 600px;
+            margin: auto;
+        }
+
+Vertikale Außenabstände und collapsing Margins
+==============================================
+Es gelten folgende Regeln:
+    - wenn vertikale Außenabstände zweier Boxen einander Berühren, verschmelzen sie.
+    - haben sie den gleichen Wert, wird nur einer übernommen.
+    - bei unterschiedlichen Werten bleibt der größere erhalten.
+
+Um Probleme mit den collapsing Margins zu vermeiden kann man folgenden Trick benutzen:
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote {
+    margin-top: 0;
+}
+
+Das Border-Box-Modell
+=====================
+Das Border-Box-Modell weicht vom klassischen Box-Modell ab, indem width den Inhaltsbereich plus den Border-Bereich
+bis zur Außenseite der Border-Box beschreibt. Das ist etwas natürlicher, da dann width wirklich beschreibt, wieviel
+
+Das Border-Box-Modell wird mit der Anweisung
+
+    box-sizing: border-box
+
+aktiviert. Die Standardeinstellung für das normale Box-Modell ist:
+
+    box-sizing: content-box
+
+Eine gute Stelle dafür ist ausnahmsweise der Universalselektor, damit die Einstellung für alle Elemente gilt:
+
+*, *::before, *::after {  // ::before und ::after sind Pseudoelemente
+    box-sizing: border-box;
+}
+
+Hintergrundgrafik
+=================
+Bilder mit Informationsgehalt werden mit dem HTML-img-Element auf einer Seite eingebunden. Für Hintergrundgrafiken
+gibt es ergänzend die CSS-Möglichkeit des background-image.
+
+html {
+    background-color: whitesmoke;
+    background-image: url(bilder/hintergrund.png);
+    background-repeat: repeat oder repeat-y oder repeat-x oder no-repeat // Standard ist repeat;
+    background-position: left, top;
+    background-attachment: fixed; // oder scroll als Standard die Grafik bewegt sich nicht mit, bei fixed schon
+    background-size: contain oder cover, gutes Beispiel ist auf der self-html-Seite
+
+}
+
+Man sollte immer eine Hintergrundfarbe angeben, denn wenn das Bild einmal nicht angezeigt werden kann,
+wird die Hintergrundfarbe angezeigt.
+
+Box Layout gestalten
+================
+Für Schatten gibt es die Eigenschaft
+
+    box-shadow      ->  die genaue Syntax schaut man sich bei Bedarf an. Wichtig ist, ein Schatten vergrößert die
+                        Box nicht und ragt u.U. sogar in die nächste Box hinein.
+
+Für abgerundete Ecken gibt es die Eigenschaft
+
+    border-radius   ->  hier gilt dasselbe wie beim Schatten, ansehen wenn nötig.
+
+Lineare Farbverläufe gestaltet man mit
+
+    background-image: linear-gradient(green, blue);
+
+Standardmäßig ist die Richtung von oben nach unten. Um eine Richtung vorzugeben, gibt es das Schlüsselwort
+
+    to bottom, to top, to right, to left...
+
+    background-image: linear-gradient(to right, green, blue);
+
+diagonale Farbverläufe erreicht man durch zwei Richtungsangaben
+
+    background-image: linear-gradient(to right bottom, green, blue);
+
+Um Boxen beim Überfahren mit der Maus zu verändern, nutzt man die transition. Auch die guckt man sich besser
+bei Bedarf an, man sollte aber wissen, dass es sie gibt.
+
+Im Buch wird ein Beispiel gezeigt, wie man Links mit einem Unicodezeichen erweitern kann, um anzuzeigen,
+dass der Link auf eine externe Seite springt. Hier ein Beispiel:
+
+    .site-content a[href^="http"]::after {
+        content: " \2197";
+    }
+
+// ::after ist ein Pseudoelement, weil es sozusagen in das HTML eingefügt wird, ohne dass es darin vorhanden ist.
+           genau genommen werden die Inhalte in das Element eingefügt und zwar vor oder nach dem Elementinhalt,
+           je nachdem, welches Pseudoelement man verwendet.
+
+
+Einheiten und Größen in CSS
+===========================
+rem         ->  root em = root-Element  entspricht der Schriftgröße, die für das Wurzelelement (html-Element)
+                                        festgelegt wurde.
+em          ->  Element                 bezieht sich auf das aktuelle Element, wobei zu unterscheiden ist, ob
+                                        man die Schriftgröße betrachtet, dann bezieht sich em auf das umschließende
+                                        Element, bei den anderen Größen auf das Element selbst.
+%           ->  Prozent                 beziehen sich in der Regel auf das umgebende Element.
+*/
+
+/* Ein Eintrag, der mit einem Punkt beginnt, bezieht sich auf eine Klasse innerhalb eines HTML-Elements.
+   Man benutzt einen Klassenselektor.
+
+Struktur und Ordnung in Stylesheets
+===================================
+@import-Anweisungen müssen am Anfang eines Stylesheets stehen, vor allen anderen CSS-Regeln.
+Folgende Syntax-Möglichkeiten bestehen:
+
+    @import url("dateiname.css");
+
+oder aber auch
+
+    @import "dateiname.css";
+
+Man beachte die Reihenfolge der Imports, denn manchmal ist sie bei der Bewertung wichtig, ob ein
+Style angezogen wird oder nicht. Die Reihenfolge der Imports legt fest, was in der "Gesamt-Style-Sheet-Datei" oben
+steht.
+
+
+
+ */

@@ -1,0 +1,6 @@
+/*  Hier die Imports mit den beiden möglichen Schreibweisen.
+    Bei beiden Schreibweisen darf man das Semikolon nicht vergessen.
+*/
+
+@import "commentstocss.css";
+@import url("layout.css");

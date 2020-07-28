@@ -1,0 +1,64 @@
+.site-header h1 {
+    margin-bottom: 0;
+}
+
+
+
+html {
+    /* transparent sorgt dafür, dass die Ränder verschwinden */
+    background-color: transparent;
+    scroll-behavior: smooth;
+}
+
+nav {
+    background-color: black;
+    color: white;
+    padding: 0.5rem;
+    margin: 1rem 0; /* oben und unten 1rem, links und rechts 0*/
+}
+
+/* .site-nav ist der Klassenname a ist das HTML-Element. Es werden also nur die HTML-Elemente
+   angepasst, die die Klasse site-nav haben und ein Anchor-Tag sind.
+*/
+.site-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.site-nav li {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.site-nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer {
+    background-color: black;
+    color: white;
+    text-align: right;
+    padding: 0.5rem;
+}
+
+.site-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+header {
+    background-color: steelblue;
+    color: white;
+    padding: 1rem;
+}
+
+body {
+    max-width: none;
+    padding: 0;
+    border: 0;
+    margin: 0;
+
+    background-color: floralwhite;
+    color: black;
+}
