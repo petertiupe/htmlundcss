@@ -79,3 +79,40 @@ navi-responsiv.css
 showmenu.menubutton::before {
     content: url(../bilder/menuclose.svg)
 }
+
+
+@media screen and (min-width: 600px) {
+
+    .menubutton {
+        display: none !important;
+    }
+
+    .site-nav {
+        position: sticky;
+    }
+
+    .site-nav ul {
+        max-height: none !important;
+        flex-flow: row;
+        padding: 0;
+    }
+
+    .site-nav li {
+        flex: 1;
+        max-width: 10rem;
+        text-align: center;
+        border-left: 1px solid #eee;
+        margin: 0;
+    }
+    .site-nav li:first-child {
+        margin: 0;
+    }
+    .site-nav li:last-child {
+        border-right: 1px solid #eee;
+        margin: 0;
+    }
+    .site-nav a {
+        margin-right: 0;
+    }
+
+} /* Ende @media */
