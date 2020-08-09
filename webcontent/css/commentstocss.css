@@ -396,4 +396,147 @@ Idealerweise macht man die Breakpoints nicht von irgendwelchen Bildschirmbreiten
 Standardtablets oder I-Phones abhängig, weil die sich im Laufe der Zeit ändern können. Besser
 ist es, das Layout vom HTML abhängig zu machen.
 
+
+Zweispaltiger Text
+==================
+Mit Hilfe der Media-Queries kann man bei sehr breiten Bildschirmen den Text
+zweispaltig darstellen, dann ist er deutlich besser lesbar:
+
+column-rule erzeugt eine Trennlinie, diese ist optional und muss man sich in einem
+konkreten Fall ansehen.
+
+@media screen and (min-width: 600px) {
+    p {
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid #eee;
+    }
+}
+
+
+Flow und die Eigenschaft position
+=================================
+Ohne weitere Aktion arbeitet man im Browser nach dem Erstellen einer Website im
+Modus
+
+    Block-Formatting Context
+
+der durch das Stamm-HTML-Element html erzeugt und festgelegt wird.
+
+Der Flow folgt den Regeln:
+==========================
+
+    1) Blockboxen werden soweit wie möglich oben links platziert und antomatisch so breit wie
+       die umgebende Box.
+
+    2) Inline-Boxen werden soweit wie möglich oben links platziert, werden aber nur so breit wie
+       ihr Inhalt. Weitere inline-Boxen folgen in derselben Zeile. Wenn rechts nicht mehr genügend
+       Platz ist, rutschen sie eine Zeile tiefer und beginnen wieder ganz links.
+
+    3) Inline-Blockboxen sind eine Mischung. Sie können mit dem Blockboxmodell formatiert werden
+       aber auch wie Inline-Boxen nebeneinander stehen.
+
+Das Verhalten einer Box kann man mit Werten wie
+
+    display: block, inline oder inline-block
+
+verändern, das oben beschriebene Verhalten der Boxen untereinander bleibt jedoch immer erhalten.
+
+Die position kann die 5 Werte
+
+    static      ->  normale Position im oben beschriebenen Flow
+    relative    ->  schützt den ursprünglichen Platz der Box und verschiebt relativ zu dieser
+                    ursprünglichen Position
+    absolute    ->  werden aus dem Flow genommen und die Position bezieht sich auf die nächste
+                    umgebende positionierte Box. Falls keine umgebende Box vorhanden ist, bezieht
+                    sich die Positionierung auf das HTML-Stammelement html.
+    fixed       ->  verhält sich wie position absolute, scrollt aber nicht mit. Der Bezugs-
+                    punkt ist nicht das drüberliegende Element sondern der Viewport.
+                    Der Webdesigner ist dafür verantwortlich, dass nicht versehentlich andere
+                    Inhalte verdeckt werden.
+    sticky      ->  sorgt für Scrollen und dann stehen bleiben. Das Element bewegt sich zunächst
+                    mit dem Flow, bleibt dann aber bei Erreichen eines bestimmten Punktes stehen,
+                    wodurch der Inhalt quasi über der Website schwebt und der Rest der Seite unter
+                    dem Element weiter fließt.
+
+annehmen.
+
+
+Der Z-Index
+===========
+Positionierte Elemente haben eine z-Index. Wenn ein Element positioniert wird, bekommt
+es den
+
+    z-Index: auto.
+
+Bei gleichem z-Index entscheided die Reihenfolge der Elemente im Quelltext. Später
+erscheinende Elemente werden vor weiter oben sthenden Elementen platziert.
+
+Der z-Index gilt nur für positionierte Boxen und ist nur relevant, wenn Boxen sich
+überlagern.
+
+Hier ein sehr einfaches Beispiel aus dem Buch:
+
+div.eins {
+    z-index: 30;
+}
+
+
+floaten
+=======
+Mit floaten kann man Bilder und Fließtext zueinander positionieren, sodass z.B. ein
+Bild von einem Text umflossen wird.
+
+Der Inhalt nachfolgender Elemente umfließt das gefloatete Element. Die Eigenschaften
+
+    background
+    padding
+    border und
+    margin
+
+rutschen aber darunter
+
+Gefloatete Elemente erzeugen immer eine Blockbox.
+Mit clear kann man die floating-Eigenschaften wieder aufheben.
+
+Hier noch ein Beispiel Quelltext für das Floaten:
+
+==============Anfang float==================================
+
+.float-rechts {
+  float: right;
+  margin: 0 0 0 1rem;
+}
+
+.float-links {
+  float: left;
+  margin: 0 1rem 0 0;
+}
+
+.float-stoppen {
+  clear: both;
+}
+
+figure[class*="float-"] {
+  text-align: center;
+}
+
+
+.float-umschliessen {
+  overflow: hidden;
+}
+
+@supports (display: flow-root) {
+
+  .float-umschliessen {
+    display: flow-root;
+    overflow: initial;
+  }
+
+}
+
+===============Ende float=================================
+
  */
+
+
