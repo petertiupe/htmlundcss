@@ -537,6 +537,50 @@ figure[class*="float-"] {
 
 ===============Ende float=================================
 
+
+Gestalten per Flexbox
+=====================
+Alles bisherige CSS basierte auf dem Block-Formatting-Context
+Für die Positionierung der Boxen hat man darin lediglich die Möglichkeiten
+    - display: inline
+    - display: inline-block
+    - position wie oben beschrieben
+    - float wie oben beschrieben
+
+Das Flexbox-Layout arbeitet zwar auch mit diesem Block-Formatting-Context,
+jedoch kann man via
+
+    display: flex;
+
+einen Flex-Container definieren. Alle Kindelemente dieses Elternelements werden
+dann automatisch zu Flex-Items. Im Firefox gibt es einen eigenen Flexbox-Analyzer.
+
+Eine Flexbox besteht im Standard immer nur aus einer Zeile, evtl. fließt der Inhalt
+aus der Seite. Wenn man mehrere Zeilen in einer Flexbox zulassen möchte, gibt es
+dafür
+
+    flex-wrap: wrap
+
+Das erlaubt dem Browser bei Bedarf mehrere Zeilen zu erzeugen. Auch eine Flex-Richtung
+kann man mit
+
+    flex-direction: column oder row
+
+festlegen. Zur Gestaltung der Flex-Box gibt es viele weitere Möglichkeiten, die
+man sich bei Bedarf ansehen muss. Diese hier alle aufzuführen, wäre zu viel.
+
+    justify-content: verteilt den Leerraum entlang der Hauptachse
+
+Die Eigenschaft flex für die Flex-Items ist kurz für:
+
+    flex-grow       erlaubt Flex-Items zu wachesn
+    flex-shrink     erlaubt Flex-Items zu schrumpfen
+    flex-basis      definiert eine gewünschte Ausgangsgröße
+
+
+
+
+
  */
 
 
