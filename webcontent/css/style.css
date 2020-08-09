@@ -3,4 +3,8 @@
 */
 
 @import "commentstocss.css";
+
 @import url("layout.css");
+
+/* Eine einfache Druckversion für die Website */
+@import "print.css";

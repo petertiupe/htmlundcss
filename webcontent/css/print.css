@@ -1,0 +1,24 @@
+/* ===============================================
+   print.css
+   Einfache Druckversion für die Übungswebseite
+   ===============================================*/
+
+/* Dies ist der entscheidende Schritt, wenn als media print vom
+   Browser geliefert wird, ziehen die folgenden Styles */
+@media print {
+    /* Universalselektor * für alles ....   */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    /* Für die Druckversion Schriftfarbe schwarz und Hintergrund weiß*/
+    html {
+        background-color: white;
+        color: black;
+    }
+    /* Navigationsleiste und Footer für den Druck ausblenden */
+    .site-nav, .site-footer {
+        display: none;
+    }
+
+} /* Ende @media print*/

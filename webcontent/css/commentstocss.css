@@ -353,5 +353,47 @@ Style angezogen wird oder nicht. Die Reihenfolge der Imports legt fest, was in d
 steht.
 
 
+Responsives Design mit Media-Queries
+====================================
+Die wichtigsten Medientypen, die in CSS heute noch benutzt werden sind:
+all         ->  für alle Ausgabemedien
+screen      ->  für Bildschirme aller Art und Größe
+print       ->  für Drucker und die Druckvorschau am Bildschirm
+
+Eine Druckausgabe als "print" erfolgt auf die via
+
+    @media print {
+        hier ständen jetzt die Regeln für die Druckausgabe.
+        Hierin arbeitet man wieder wie mit normalem CSS.
+    } Ende @media print
+
+    eine Übungsdatei von mir angepasst gibt es im Kapitel 19 unter dem Namen print.css
+
+Media-Queries kann man noch um Abfragen für Eigenschaften des Ausgabegerätes erweitern:
+
+    @media screen and (min-width: 600px) and max-width(767px) {
+        hier ständen jetzt die Regeln
+    }
+
+Die Umbruchstelle bei einer Media-Query wird Breakpoint genannt.
+Natürlich sind auch mehrere Breakpoints in einer Datei möglich.
+
+Die wichtigsten abzufragenden Eigenschaften sind:
+    - width
+    - height
+    - orientation
+    - resolution
+
+Bei den Media-Queries ist der Meta-Viewport wichtig, weil ansonsten auf mobilen
+Geräten Probleme entstehen können. Dieser muss allerdings im HTML und nicht im CSS
+definiert sein. In folgenden Versionen könnte sich dies ändern.
+
+Hintergrund ist, dass viele mobile Browser einen virtuellen Viewport definiert haben,
+damit die Webseite komplett dargestellt wird. Dies stärt natürlich die eigene Definition.
+Daher schaltet man über den Meta-Viewport den Virtuellen Viewport sozusagen aus.
+
+Idealerweise macht man die Breakpoints nicht von irgendwelchen Bildschirmbreiten von
+Standardtablets oder I-Phones abhängig, weil die sich im Laufe der Zeit ändern können. Besser
+ist es, das Layout vom HTML abhängig zu machen.
 
  */
