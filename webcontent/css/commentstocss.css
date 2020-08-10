@@ -578,8 +578,31 @@ Die Eigenschaft flex für die Flex-Items ist kurz für:
     flex-basis      definiert eine gewünschte Ausgangsgröße
 
 
+Es gibt eine Java-Script-Funktion
 
+    this.classList.toggle()
 
+die eine CSS-Klasse zu einem Element hinzufügt, wenn sie nicht vorhanden ist
+und sie löscht, wenn sie vorhanden ist.
+Eine Navigationsleiste kann man mit
+
+    max-height: 0
+
+ausblenden, weil max-heigt anders als
+
+    display: none
+
+animiert werden kann.
+
+Gestalten per Grid Layout
+=========================
+Das Grid widmet sich dem Nebeneinander von Layout-Modulen.
+Es wird seit 2017 von allen modernen Browsern unterstützt.
+Ob ein Browser das Grid unterstützt, kann man folgendermaßen abfragen:
+
+    @supports (display:grid) {
+        hier steht dann das entsprechende CSS.
+    }
 
  */
 
